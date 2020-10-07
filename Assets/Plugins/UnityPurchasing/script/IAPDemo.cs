@@ -356,7 +356,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
 
         m_IsGooglePlayStoreSelected =
             Application.platform == RuntimePlatform.Android && module.appStore == AppStore.GooglePlay;
-
+        builder.Configure<IGooglePlayConfiguration>().SetPublicKey("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoijNfTc9kS+M6R12DNc32dG7Mrg/czFABHPgYg8IQ8xebBoQMRXGEbmm4CHoNxCSJk+Fcs05wTogSsGbN0uemOmJUwCYowLQxzIeOBqH4aB2kDqMSDqKJnK08wDUFtDIrIBsczFincIW4i0E4JqtrGPksqn/tG5SvKvheG4x8yUcLWbd/MC885cZY1lMoRsaakVf/EoMfqtOccH+1x2dFVh0Q/NTAkgExILsN4KXHTpM2mHLKr6Dv3NK9ueYsLvf39kL9CwLZFFyD3413cyqtR4ZdfHL0BHw+9rSr0uysMtU3SGfqBHgyjMVNFL0eL6txWgVDhL3MaAXokIm0CePiwIDAQAB");
 #if AGGRESSIVE_INTERRUPT_RECOVERY_GOOGLEPLAY
         // For GooglePlay, if we have access to a backend server to deduplicate purchases, query purchase history
         // when attempting to recover from a network-interruption encountered during purchasing. Strongly recommend
@@ -396,46 +396,46 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         // So on the Mac App store our products have different identifiers,
         // and we tell Unity IAP this by using the IDs class.
 
-        builder.AddProduct("100.gold.coins", ProductType.Consumable, new IDs
-            {
-                {"com.unity3d.unityiap.unityiapdemo.100goldcoins.7", MacAppStore.Name},
-                {"100.gold.coins", AmazonApps.Name},
-                {"100.gold.coins", AppleAppStore.Name}
-            }
-#if USE_PAYOUTS
-                , new List<PayoutDefinition> {
-                new PayoutDefinition(PayoutType.Item, "", 1, "item_id:76543"),
-                new PayoutDefinition(PayoutType.Currency, "gold", 50)
-                }
-#endif //USE_PAYOUTS
-                );
+//         builder.AddProduct("100.gold.coins", ProductType.Consumable, new IDs
+//             {
+//                 {"com.unity3d.unityiap.unityiapdemo.100goldcoins.7", MacAppStore.Name},
+//                 {"100.gold.coins", AmazonApps.Name},
+//                 {"100.gold.coins", AppleAppStore.Name}
+//             }
+// #if USE_PAYOUTS
+//                 , new List<PayoutDefinition> {
+//                 new PayoutDefinition(PayoutType.Item, "", 1, "item_id:76543"),
+//                 new PayoutDefinition(PayoutType.Currency, "gold", 50)
+//                 }
+// #endif //USE_PAYOUTS
+//                 );
+//
+//         builder.AddProduct("500.gold.coins", ProductType.Consumable, new IDs
+//             {
+//                 {"com.unity3d.unityiap.unityiapdemo.500goldcoins.7", MacAppStore.Name},
+//                 {"500.gold.coins", AmazonApps.Name},
+//             }
+// #if USE_PAYOUTS
+//         , new PayoutDefinition(PayoutType.Currency, "gold", 500)
+// #endif //USE_PAYOUTS
+//         );
+//
+//         builder.AddProduct("300.gold.coins", ProductType.Consumable, new IDs
+//             {
+//             }
+// #if USE_PAYOUTS
+//         , new List<PayoutDefinition> {
+//             new PayoutDefinition(PayoutType.Item, "", 1, "item_id:76543"),
+//             new PayoutDefinition(PayoutType.Currency, "gold", 50)
+//         }
+// #endif //USE_PAYOUTS
+//         );
 
-        builder.AddProduct("500.gold.coins", ProductType.Consumable, new IDs
-            {
-                {"com.unity3d.unityiap.unityiapdemo.500goldcoins.7", MacAppStore.Name},
-                {"500.gold.coins", AmazonApps.Name},
-            }
-#if USE_PAYOUTS
-        , new PayoutDefinition(PayoutType.Currency, "gold", 500)
-#endif //USE_PAYOUTS
-        );
-
-        builder.AddProduct("300.gold.coins", ProductType.Consumable, new IDs
-            {
-            }
-#if USE_PAYOUTS
-        , new List<PayoutDefinition> {
-            new PayoutDefinition(PayoutType.Item, "", 1, "item_id:76543"),
-            new PayoutDefinition(PayoutType.Currency, "gold", 50)
-        }
-#endif //USE_PAYOUTS
-        );
-
-        builder.AddProduct("sub1", ProductType.Subscription, new IDs
+        builder.AddProduct("sub1week", ProductType.Subscription, new IDs
         {
         });
 
-        builder.AddProduct("sub2", ProductType.Subscription, new IDs
+        builder.AddProduct("sub1month", ProductType.Subscription, new IDs
         {
         });
 
